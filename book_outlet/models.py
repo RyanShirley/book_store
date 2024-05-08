@@ -12,6 +12,8 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 # the usual way. e.g. Book.objects.all()[0] is an instance of book and you can access its attributes
 # with Book.objects.all()[0].title for example.
 
+# adding a comment
+
 class Book(models.Model):
     title = models.CharField(max_length=50)
     rating = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(5)])

@@ -12,7 +12,11 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 # the usual way. e.g. Book.objects.all()[0] is an instance of book and you can access its attributes
 # with Book.objects.all()[0].title for example.
 
-# adding a comment
+# Note: to save your changes to the database, you can make a variable point to a single
+# element from the list exposed by Book.objects.all().  Then call the save() method
+# on the object.  If the entry is new, Django will add a row, else it will update an
+# existing record.
+
 
 class Book(models.Model):
     title = models.CharField(max_length=50)

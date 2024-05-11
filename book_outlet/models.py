@@ -23,6 +23,16 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 # 2) Call Book.objects.create(...)
 #    - This writes directly to the database 
 
+# Book.objects.get() is another way to get a single element from the DB
+# the "id" field is automatically added to all the objects, autoincrement
+# You can use id to look up elements Book.objects.get(id=1)
+# Or you can use Book.objects.get(title="Harry Potter")
+# But get() is for returning only a single entity
+# filter() can return multiple results.  e.g. filter(is_bestselling=True)
+# If you want to use >= or > etc with filter, then use the __lte or __lt modifiers
+# e.g. filter(rating_lt==5)  will find all books where rating less than 5
+# Another modifier is __contains.  This does a LIKE in SQL.
+
 
 class Book(models.Model):
     title = models.CharField(max_length=50)

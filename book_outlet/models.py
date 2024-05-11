@@ -17,6 +17,12 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 # on the object.  If the entry is new, Django will add a row, else it will update an
 # existing record.
 
+# Create vs Save.  To add entries to the database there are 2 ways
+# 1) Create an instance of the model class and then call .save()
+#    - This is 2 steps
+# 2) Call Book.objects.create(...)
+#    - This writes directly to the database 
+
 
 class Book(models.Model):
     title = models.CharField(max_length=50)

@@ -33,6 +33,12 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 # e.g. filter(rating_lt==5)  will find all books where rating less than 5
 # Another modifier is __contains.  This does a LIKE in SQL.
 
+# If you want to search your table/list using conditons joined by OR, then 
+# you need the Q class from django.db.models. 
+# By wrapping your filter() conditions with Q() you can then OR them together 
+# with the usual | operator.  If you want AND and OR in a filter, then use 
+# a , for the AND and | for the OR.
+
 
 class Book(models.Model):
     title = models.CharField(max_length=50)

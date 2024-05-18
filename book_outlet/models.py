@@ -39,6 +39,14 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 # with the usual | operator.  If you want AND and OR in a filter, then use 
 # a , for the AND and | for the OR.
 
+# Calling filter returns a QuerySet that can again be filtered with the filter()
+# function.
+# Note that Django will cache the results of a query until the database changes.
+# The cached results of one query are used when you call filter() on its results.
+# You can increase performance by reusing cached results.  If you call Book.objects.filter()
+# again and again, then it will hit the database for each time.  Instead, assign
+# the result to a variable and then it will be cached.
+
 
 class Book(models.Model):
     title = models.CharField(max_length=50)

@@ -47,6 +47,8 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 # again and again, then it will hit the database for each time.  Instead, assign
 # the result to a variable and then it will be cached.
 
+# Making a minor change...
+
 
 class Book(models.Model):
     title = models.CharField(max_length=50)

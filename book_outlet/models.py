@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.urls import reverse
 
 # Create your models here.
 # Models have a built-in method called save() that writes the data contained within to the database
@@ -47,6 +48,10 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 # again and again, then it will hit the database for each time.  Instead, assign
 # the result to a variable and then it will be cached.
 
+# we use reverse() to build the URL in the get_absolute_url function
+# the "book-detail" field is the name of the url we gave in the urls.py
+# book-detail can be referenced as a name wherever we need to fetch the actual URL for that URL
+
 # Making a minor change...
 
 
@@ -55,6 +60,10 @@ class Book(models.Model):
     rating = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(5)])
     author = models.CharField(null=True, max_length=100)
     is_bestselling = models.BooleanField(default=False)
+
+    def get_absolute_url(self):
+        return reverse("book-detail", args=[self.id])
+    
 
     def __str__(self):
         return f"{self.title} ({self.rating}/5)"

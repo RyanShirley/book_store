@@ -5,6 +5,7 @@
 {% endblock title %}
 
 {% block content %}
+    <h1>Book Store</h1>
     <ul>
         {% for book in books %}
             <li><a href={{ book.get_absolute_url }}>{{ book.title }}</a> Rating: {{ book.rating }}</li>
